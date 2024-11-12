@@ -1,0 +1,1 @@
+export class StarshipNotfound extends Error {}
