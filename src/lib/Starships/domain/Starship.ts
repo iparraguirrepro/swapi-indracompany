@@ -33,19 +33,16 @@ export class Starship {
     this.cost_in_credits = cost_in_credits || 0;
   }
 
-  public fullStarshipName() {
-    return `${this.name} - ${this.model}`;
-  }
-
   public toPlainObject() {
     return {
-      name: this.name,
-      model: this.model,
-      manufacturer: this.manufacturer,
-      starship_class: this.starship_class,
-      cargo_capacity: this.cargo_capacity,
-      passengers: this.passengers,
-      created: this.created,
+      nombre: this.name,
+      modelo: this.model,
+      manufactura: this.manufacturer,
+      clase: this.starship_class,
+      capacidad_carga: this.cargo_capacity,
+      pasajeros: this.passengers,
+      creado: this.created,
+      costo: this.cost_in_credits
     };
   }
 }

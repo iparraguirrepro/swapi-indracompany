@@ -22,38 +22,13 @@ export class TypeOrmStarshipRepository implements StarshipRepository {
     );
   }
 
-  async getAll() {
+  async getAllStored() {
     const user = await this.repository.find();
 
     return user.map((u) => this.mapToDomain(u));
   }
 
-  async create(user: Starship): Promise<void> {
-    // await this.repository.save({
-    //   id: user.id.value,
-    //   name: user.name.value,
-    //   email: user.email.value,
-    //   createdAt: user.createdAt.value,
-    // });
-  }
-
-  async getByBName(name: string): Promise<Starship> {
-    // const user = await this.repository.findOne({
-    //   where: {
-    //     id: name,
-    //   },
-    // });
-    //
-    // if (!user) return null;
-
-    return this.mapToDomain(null);
-  }
-
-  async updateByName(starship_name: string, starship: any): Promise<void> {
-    // await this.repository.update(user.id.value, {
-    //   name: user.name.value,
-    //   email: user.email.value,
-    //   createdAt: user.createdAt.value,
-    // });
+  async create(starship): Promise<void> {
+    await this.repository.save(starship);
   }
 }

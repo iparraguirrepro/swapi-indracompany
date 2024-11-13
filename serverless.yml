@@ -1,0 +1,63 @@
+service: swapi-indra
+
+plugins:
+  - serverless-localstack
+  - serverless-plugin-typescript
+  - serverless-plugin-warmup
+provider:
+  name: aws
+  stage: local
+  runtime: nodejs20.x
+#  profile: localstack
+
+
+functions:
+  indrapi:
+    handler: src/lambda.handler
+    package:
+      patterns:
+        - "!./**"
+        - "./src/lambda.ts"
+    events:
+      - http:
+          method: any
+          path: /
+          cors: true
+
+build:
+  esbuild: false
+
+package:
+  patterns:
+    - '!node_modules/**'
+
+custom:
+  localstack:
+    debug: true
+    build:
+      esbuild: false
+    stages:
+      - local
+    host: http://localhost
+    edgePort: 4566
+    autostart: true
+    networks:
+      - host
+      - overlay
+    endpoints:
+      Lambda: http://localhost:4574
+      DynamoDB: http://localhost:4570
+      # S3: http://localhost:4572
+      # CloudFormation: http://localhost:4581
+      # Elasticsearch: http://localhost:4571
+      # ES: http://localhost:4578
+      # SNS: http://localhost:4575
+      # SQS: http://localhost:4576
+      # Kinesis: http://localhost:4568
+    lambda:
+      mountCode: false
+    docker:
+      sudo: False
+  stages:
+    local:
+      ...

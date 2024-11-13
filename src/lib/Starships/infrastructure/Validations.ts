@@ -1,27 +1,50 @@
-import { IsEmail, isString, IsString, Length } from "class-validator";
+import { IsNumber, IsString, Length } from 'class-validator';
+import { ApiPropertyOptional } from '@nestjs/swagger';
 
-export class FindOneParams{
-    @IsString()
-    @Length(5, 255)
-    id: string;
+export class FindOneParams {
+  id: number;
 }
 
-export class Create{
-    @IsString()
-    @Length(5, 255)
-    id: string;
+export class Create {
+  @ApiPropertyOptional({
+    type: String,
+  })
+  @IsString()
+  name: string;
 
-    @IsString()
-    name: string;
+  @ApiPropertyOptional({
+    type: String,
+  })
+  @IsString()
+  model: string;
 
-    @IsEmail()
-    email: string
-}
+  @ApiPropertyOptional({
+    type: String,
+  })
+  @IsString()
+  manufacturer: string;
 
-export class Edit{
-    @IsString()
-    name: string;
+  @ApiPropertyOptional({
+    type: String,
+  })
+  @IsString()
+  starship_class: string;
 
-    @IsEmail()
-    email: string
+  @ApiPropertyOptional({
+    type: Number,
+  })
+  @IsNumber()
+  cost_in_credits: number;
+
+  @ApiPropertyOptional({
+    type: Number,
+  })
+  @IsNumber()
+  passengers: number;
+
+  @ApiPropertyOptional({
+    type: Number,
+  })
+  @IsNumber()
+  cargo_capacity: number;
 }

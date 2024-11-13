@@ -5,6 +5,6 @@ export class StarshipGetAll {
   constructor(private repository: StarshipRepository) {}
 
   async run(): Promise<Starship[]> {
-    return this.repository.getAll();
+    return this.repository.getAllStored();
   }
 }

@@ -1,6 +1,6 @@
 import { Column, Entity, PrimaryColumn } from 'typeorm';
 
-@Entity('starship')
+@Entity('starships')
 export class TypeOrmStarshipEntity {
   @PrimaryColumn()
   name: string;
@@ -24,5 +24,5 @@ export class TypeOrmStarshipEntity {
   cargo_capacity: number;
 
   @Column()
-  createdAt: Date;
+  request_at: Date;
 }
