@@ -2,12 +2,12 @@
 
 **_[jonatan@iparraguirre.pro](https://iparraguirre.pro/)_**
 
->-[x] Arq Hexagonal
->-[x] Consumo Swapi
->-[ ] Documentación
->-[ ] Pruebas unitarias
->-[x] Swagger
->-[x] Serverless
+>1. [x] Arq Hexagonal
+>2. [x] Consumo Swapi
+>3. [ ] Documentación
+>4. [ ] Pruebas unitarias
+>5. [x] Swagger
+>6. [x] Serverless
 
 # Recursos:
 
