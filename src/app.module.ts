@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
+import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmStarshipEntity } from './lib/Starships/infrastructure/TypeORM/TypeOrmStarshipEntity';
 import { StarshipModule } from './lib/Starships/infrastructure/starship.module';
@@ -27,8 +27,6 @@ import { HttpModule } from '@nestjs/axios';
     HttpModule,
     StarshipModule,
   ],
-  providers: [
-    SwapiImplementationService
-  ]
+  providers: [SwapiImplementationService],
 })
 export class AppModule {}

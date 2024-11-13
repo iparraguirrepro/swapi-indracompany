@@ -1,0 +1,9 @@
+{
+  "name": "Death Star 6",
+  "model": "DS-1 Orbital Battle Station",
+  "manufacturer": "Imperial Department of Military Research, Sienar Fleet Systems",
+  "starship_class": "Deep Space Mobile Battlestation",
+  "cost_in_credits": 1000000000000,
+  "passengers": 843,
+  "cargo_capacity": 100
+}

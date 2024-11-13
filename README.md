@@ -4,7 +4,7 @@
 
 >1. [x] Arq Hexagonal
 >2. [x] Consumo Swapi
->3. [ ] Documentación
+>3. [x] Documentación de uso
 >4. [ ] Pruebas unitarias
 >5. [x] Swagger
 >6. [x] Serverless
@@ -15,4 +15,4 @@
 
 **Swagger: http://localhost:3000/api**
 
-**Postman collection: [Ver postman](https://www.postman.com/spacecraft-cosmologist-57869160/swapi-indra/collection/cn6jkhf/swapi-indra)**
+**Postman collection: [Ver postman](https://www.postman.com/spacecraft-cosmologist-57869160/swapi-indra/documentation/npuus44/swapi-indra)**

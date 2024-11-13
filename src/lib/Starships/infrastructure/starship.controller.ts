@@ -13,6 +13,7 @@ import { StarshipGetAll } from '../application/StarshipGetAll';
 import { StarshipBulk } from '../application/StarshipBulk';
 import { SwapiRepository } from './Swapi/Swapi.repository';
 import { ApiOperation } from '@nestjs/swagger';
+import { CREATE, CREATE_BULK } from '../../../commons/constants/message';
 
 @Controller('starships')
 export class StarshipController {
@@ -46,15 +47,21 @@ export class StarshipController {
     }
   }
 
-  @Post()
+  @Post('/create')
   @ApiOperation({ summary: 'Create starship on database' })
   async createOne(@Body() body: Create) {
-    return await this.starshipCreate.run(body);
+    await this.starshipCreate.run(body);
+    return {
+      message: CREATE,
+    };
   }
 
   @Post('/bulk')
   @ApiOperation({ summary: 'Create many starships on database' })
   async createMany(@Body() body: Create[]) {
-    return await this.starshipBulk.run(body);
+    await this.starshipBulk.run(body);
+    return {
+      message: CREATE_BULK,
+    };
   }
 }
