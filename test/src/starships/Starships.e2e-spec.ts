@@ -9,16 +9,8 @@ const fs = require('fs');
 describe('ProductsController (e2e)', () => {
   let app: INestApplication;
   let container;
-  const portMongo = 27017;
-  jest.setTimeout(30000);
 
-  beforeAll(async (done) => {
-    container = await new GenericContainer('mongo')
-      .withExposedPorts(portMongo)
-      .withWaitStrategy(Wait.forLogMessage('Listening on 0.0.0.0'))
-      .start();
-    done();
-  });
+  jest.setTimeout(30000);
 
   afterAll(async (done) => {
     container.stop();
@@ -27,9 +19,7 @@ describe('ProductsController (e2e)', () => {
 
   beforeEach(async (done) => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
-      imports: [
-        // AppModule.foorRoot({ port: container.getMappedPort(portMongo) }),
-      ],
+      imports: [AppModule],
     }).compile();
 
     app = moduleFixture.createNestApplication();

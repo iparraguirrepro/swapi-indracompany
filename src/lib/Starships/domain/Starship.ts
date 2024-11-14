@@ -33,6 +33,10 @@ export class Starship {
     this.cost_in_credits = cost_in_credits || 0;
   }
 
+  public getDetails(): string {
+    return `${this.model} - ${this.starship_class}`
+  }
+
   public toPlainObject() {
     return {
       nombre: this.name,

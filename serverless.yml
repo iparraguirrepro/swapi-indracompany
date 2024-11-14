@@ -4,32 +4,33 @@ plugins:
   - serverless-localstack
   - serverless-plugin-typescript
   - serverless-plugin-warmup
+
 provider:
   name: aws
   stage: local
   runtime: nodejs20.x
-#  profile: localstack
-
+  apiGateway:
+    shouldStartNameWithService: true
 
 functions:
   indrapi:
     handler: src/lambda.handler
     package:
+      exclude:
+        - __tests__/**
+        - .gitignore
+        - package-lock.json
+        - .git/**
       patterns:
-        - "!./**"
-        - "./src/lambda.ts"
+        - 'node_modules/**'
     events:
       - http:
-          method: any
-          path: /
           cors: true
+          path: '{proxy+}'
+          method: any
 
 build:
   esbuild: false
-
-package:
-  patterns:
-    - '!node_modules/**'
 
 custom:
   localstack:

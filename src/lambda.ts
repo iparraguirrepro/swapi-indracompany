@@ -3,12 +3,12 @@ import { Handler, Context } from 'aws-lambda';
 import { Server } from 'http';
 import { createServer, proxy } from 'aws-serverless-express';
 import { eventContext } from 'aws-serverless-express/middleware';
+import express from 'express';
 
 import { NestFactory } from '@nestjs/core';
 import { ExpressAdapter } from '@nestjs/platform-express';
 import { AppModule } from './app.module';
-
-const express = require('express');
+import { ValidationPipe } from '@nestjs/common';
 
 const binaryMimeTypes: string[] = [];
 
@@ -21,6 +21,9 @@ async function bootstrapServer(): Promise<Server> {
       AppModule,
       new ExpressAdapter(expressApp),
     );
+    nestApp.useGlobalPipes(new ValidationPipe({ forbidUnknownValues: true }));
+    nestApp.enableCors();
+
     nestApp.use(eventContext());
     await nestApp.init();
     cachedServer = createServer(expressApp, undefined, binaryMimeTypes);
